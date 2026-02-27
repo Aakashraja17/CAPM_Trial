@@ -1,0 +1,48 @@
+<mvc:View controllerName="com.capmlearn.uicapm.controller.View1"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page id="page" title="{i18n>title}">
+		<subHeader>
+			<OverflowToolbar>
+				 <Button text="Create" type="Emphasized" press=".onOpenCreateDialog" icon="sap-icon://add"/>
+				<ToolbarSpacer />
+				<Input id= "idFilterName" placeholder="Name" liveChange="onFilter" width="200px" ></Input>
+				<Button icon="sap-icon://search" press="onFilter"/>
+				<Button icon="sap-icon://sort" press="onSort"/>
+			</OverflowToolbar>
+		</subHeader>
+		<Table id= "idEmpTable" 
+                items="{
+                path: '/Employee',
+                parameters: { $select : 'EmpId,Name,Salary' }
+             }"
+>
+			<columns>
+				<Column >
+					<Text text="EmpId"></Text>
+				</Column>
+				<Column >
+					<Text text="Name"></Text>
+				</Column>
+				<Column >
+					<Text text="Salary"></Text>
+				</Column>
+				<Column >
+					<Text text="Update"></Text>
+				</Column>
+				<Column >
+					<Text text="Delete"></Text>
+				</Column>
+			</columns>
+			<ColumnListItem >
+				<cells>
+					<Text text="{EmpId}"></Text>
+					<Text text="{Name}"></Text>
+					<Text text="{Salary}"></Text>
+					<Button icon="sap-icon://edit" press=".onOpenUpdateDialog"/>
+					<Button icon="sap-icon://delete" press="onDelete"/>
+				</cells>
+			</ColumnListItem>
+		</Table>
+	</Page>
+</mvc:View>
