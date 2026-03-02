@@ -177,7 +177,35 @@ onConfirmUpdate: async function () {
   } catch (e) {
     sap.m.MessageBox.error("Update failed: " + (e && e.message ? e.message : e));
   }
+  const oTable = this.byId("idEmpTable");
+const oListBinding = oTable.getBinding("items");
+
+await oModel.submitBatch("$auto");
+oListBinding.refresh();   // triggers reread of /Employees
+
+},
+onDeleteRow: async function (oEvent) {
+  const oCtx = oEvent.getSource().getBindingContext();
+  const oModel = this.getView().getModel();
+
+  sap.m.MessageBox.confirm("Do you really want to delete this employee?", {
+    actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+    onClose: async (sAction) => {
+      if (sAction === sap.m.MessageBox.Action.OK) {
+        try {
+          await oCtx.delete("$auto");
+          await oModel.submitBatch("$auto");
+          sap.m.MessageToast.show("Employee deleted");
+        } catch (e) {
+          sap.m.MessageBox.error("Delete failed: " + (e && e.message ? e.message : e));
+        }
+      }
+    }
+  });
 }
+
+    
+
 
 
     

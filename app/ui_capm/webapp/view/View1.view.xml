@@ -40,7 +40,7 @@
 					<Text text="{Name}"></Text>
 					<Text text="{Salary}"></Text>
 					<Button icon="sap-icon://edit" press=".onOpenUpdateDialog"/>
-					<Button icon="sap-icon://delete" press="onDelete"/>
+					<Button icon="sap-icon://delete" press="onDeleteRow"/>
 				</cells>
 			</ColumnListItem>
 		</Table>
