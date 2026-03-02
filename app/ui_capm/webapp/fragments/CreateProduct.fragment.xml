@@ -1,7 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-  <Dialog id="createDialog" title="Create Product" type="Message">
+  <Dialog id="createDialog" title="Create Employee" type="Message">
     <content>
       <VBox class="sapUiSmallMargin">
+
         <Label text="EmpId" labelFor="inpEmpId"/>
         <Input id="inpEmpId" value="{create>/EmpId}" required="true" placeholder="Enter EmpId"/>
 
@@ -10,13 +11,32 @@
 
         <Label text="Salary" labelFor="inpSalary"/>
         <Input id="inpSalary" value="{create>/Salary}" placeholder="Enter Salary"/>
+
+        <Label text="Gender" labelFor="inpGender"/>
+
+        <Select id="inpGender"
+                selectedKey="{path: 'create>/Gender'}"
+                required="true"
+                forceSelection="true"
+                width="100%">
+          <core:Item key=""      text="Select"/> 
+          <core:Item key="Male" text="Male"/>
+          <core:Item key="Female" text="Female"/>
+          <core:Item key="Others" text="Others"/>
+        </Select>
+
+        <Label text="Age" labelFor="inpAge"/>
+        <Input id="inpAge" value="{create>/Age}" type="Number" placeholder="Enter Age"/>
+
       </VBox>
     </content>
+
     <beginButton>
       <Button text="Save" type="Emphasized" press=".onSaveCreate"/>
     </beginButton>
     <endButton>
       <Button text="Cancel" press=".onCancelCreate"/>
     </endButton>
+
   </Dialog>
 </core:FragmentDefinition>

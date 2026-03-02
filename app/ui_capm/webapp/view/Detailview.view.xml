@@ -1,0 +1,30 @@
+<mvc:View controllerName="com.capmlearn.uicapm.controller.Detailview"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page id="page1" title="{i18n>title}" showNavButton="true" navButtonPress=".onNavBack">
+    <content>
+      <VBox class="sapUiSmallMargin">
+
+        <Label text="EmpId" labelFor="dEmpId"/>
+        <!-- If EmpId should not be changed, set editable="false" -->
+        <Input id="dEmpId" value="{EmpId}" editable="false"/>
+
+        <Label text="Name" labelFor="dName"/>
+        <Input id="dName" value="{Name}" />
+
+        <Label text="Salary" labelFor="dSalary"/>
+        <Input id="dSalary" value="{Salary}"/>
+        <!-- Salary kept as string per your requirement -->
+
+        <Label text="Gender" labelFor="dGender"/>
+        <Input id="dGender" value="{Gender}"/>
+
+        <Label text="Age" labelFor="dAge"/>
+        <Input id="dAge" value="{Age}"/>
+
+
+      </VBox>
+               </content>
+    	</Page>
+         
+</mvc:View>

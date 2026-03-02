@@ -14,6 +14,20 @@
         <Input id="updSalary" value="{Salary}"/>
         <!-- Salary kept as string per your requirement -->
 
+        <Label text="Gender" labelFor="updGender"/>
+        
+<Select id="updGender"
+        selectedKey="{ path: 'Gender', mode: 'OneWay' }"
+        forceSelection="true"
+        width="100%">
+    <core:Item key="Male"   text="Male"/>
+    <core:Item key="Female" text="Female"/>
+    <core:Item key="Others" text="Others"/>
+</Select>
+        <Label text="Age" labelFor="updAge"/>
+        <Input id="updAge"  type="Number" value="{Age}"/>
+
+
       </VBox>
     </content>
 

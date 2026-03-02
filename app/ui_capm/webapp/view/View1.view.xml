@@ -4,7 +4,7 @@
 	<Page id="page" title="{i18n>title}">
 		<subHeader>
 			<OverflowToolbar>
-				 <Button text="Create" type="Emphasized" press=".onOpenCreateDialog" icon="sap-icon://add"/>
+				 <Button text="Create" type="Emphasized" press="onOpenCreateDialog" icon="sap-icon://add"/>
 				<ToolbarSpacer />
 				<Input id= "idFilterName" placeholder="Name" liveChange="onFilter" width="200px" ></Input>
 				<Button icon="sap-icon://search" press="onFilter"/>
@@ -12,11 +12,14 @@
 			</OverflowToolbar>
 		</subHeader>
 		<Table id= "idEmpTable" 
+		mode="SingleSelectMaster"
                 items="{
                 path: '/Employee',
-                parameters: { $select : 'EmpId,Name,Salary' }
+                parameters: { $select : 'EmpId,Name,Salary,Gender' }
              }"
->
+			 itemPress="onItemPress"
+
+			 >
 			<columns>
 				<Column >
 					<Text text="EmpId"></Text>
@@ -25,7 +28,7 @@
 					<Text text="Name"></Text>
 				</Column>
 				<Column >
-					<Text text="Salary"></Text>
+					<Text text="Gender"></Text>
 				</Column>
 				<Column >
 					<Text text="Update"></Text>
@@ -34,15 +37,17 @@
 					<Text text="Delete"></Text>
 				</Column>
 			</columns>
-			<ColumnListItem >
+			<items>
+			<ColumnListItem type="Active">
 				<cells>
-					<Text text="{EmpId}"></Text>
+					<ObjectIdentifier title="{EmpId}"/>
 					<Text text="{Name}"></Text>
-					<Text text="{Salary}"></Text>
+					<Text text="{Gender}"></Text>
 					<Button icon="sap-icon://edit" press=".onOpenUpdateDialog"/>
 					<Button icon="sap-icon://delete" press="onDeleteRow"/>
 				</cells>
 			</ColumnListItem>
+			</items>
 		</Table>
 	</Page>
 </mvc:View>

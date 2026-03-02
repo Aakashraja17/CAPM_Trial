@@ -98,14 +98,29 @@
           "target": [
             "TargetView1"
           ]
+        },
+        {
+          "name": "RouteViewDetail",
+          "pattern": "RouteViewDetail/{EmpId}",
+          "target": [
+            "TargetViewDetail"
+          ]
         }
       ],
-      "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
-        }
-      }
+      
+"targets": {
+  "TargetView1": {
+    "viewId": "View1",
+    "viewName": "View1",
+    "viewType": "XML"
+  },
+  "TargetViewDetail": {
+    "viewId": "Detailview",
+    "viewName": "Detailview",
+    "viewType": "XML"
+  }
+}
+
     },
     "rootView": {
       "viewName": "com.capmlearn.uicapm.view.App",
