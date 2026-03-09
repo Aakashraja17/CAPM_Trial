@@ -14,11 +14,11 @@ sap.ui.define([
     },
 
     _onRouteMatched: function (oEvent) {
-      const EmpId = oEvent.getParameter("arguments").EmpId;
+      const ID = oEvent.getParameter("arguments").ID;
 
       // EmpId is STRING → use single quotes
       this.getView().bindElement({
-        path: `/Employee('${EmpId}')`
+        path: `/Employee('${ID}')`
       });
     },
 

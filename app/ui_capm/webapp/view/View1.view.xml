@@ -1,53 +1,61 @@
 <mvc:View controllerName="com.capmlearn.uicapm.controller.View1"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
-	<Page id="page" title="{i18n>title}">
-		<subHeader>
-			<OverflowToolbar>
-				 <Button text="Create" type="Emphasized" press="onOpenCreateDialog" icon="sap-icon://add"/>
-				<ToolbarSpacer />
-				<Input id= "idFilterName" placeholder="Name" liveChange="onFilter" width="200px" ></Input>
-				<Button icon="sap-icon://search" press="onFilter"/>
-				<Button icon="sap-icon://sort" press="onSort"/>
-			</OverflowToolbar>
-		</subHeader>
-		<Table id= "idEmpTable" 
-		mode="SingleSelectMaster"
-                items="{
-                path: '/Employee',
-                parameters: { $select : 'EmpId,Name,Salary,Gender' }
-             }"
-			 itemPress="onItemPress"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page id="page" title="{i18n>title}">
+    <subHeader>
+      <OverflowToolbar>
+        <Button text="Create" type="Emphasized" press="onOpenCreateDialog" icon="sap-icon://add"/>
+        <ToolbarSpacer />
+        <Input id="idFilterName" placeholder="Name" liveChange="onFilter" width="200px" />
+        <Button icon="sap-icon://search" press="onFilter"/>
+        <Button icon="sap-icon://sort" press="onSort"/>
+      </OverflowToolbar>
+    </subHeader>
 
-			 >
-			<columns>
-				<Column >
-					<Text text="EmpId"></Text>
-				</Column>
-				<Column >
-					<Text text="Name"></Text>
-				</Column>
-				<Column >
-					<Text text="Gender"></Text>
-				</Column>
-				<Column >
-					<Text text="Update"></Text>
-				</Column>
-				<Column >
-					<Text text="Delete"></Text>
-				</Column>
-			</columns>
-			<items>
-			<ColumnListItem type="Active">
-				<cells>
-					<ObjectIdentifier title="{EmpId}"/>
-					<Text text="{Name}"></Text>
-					<Text text="{Gender}"></Text>
-					<Button icon="sap-icon://edit" press=".onOpenUpdateDialog"/>
-					<Button icon="sap-icon://delete" press="onDeleteRow"/>
-				</cells>
-			</ColumnListItem>
-			</items>
-		</Table>
-	</Page>
+    <Table id="idEmpTable"
+      mode="SingleSelectMaster"
+      itemPress="onItemPress"
+      items="{
+        path: '/Employee',
+        parameters: { $select: 'ID,Name,Salary,Gender' }
+      }">
+
+      <columns>
+        <Column>
+          <Text text="Name"/>
+        </Column>
+        <Column>
+          <Text text="Gender"/>
+        </Column>
+
+        <!-- ONE combined column for actions -->
+        <Column hAlign="Center" width="7rem">
+          <Text text="Actions"/>
+        </Column>
+      </columns>
+
+      <items>
+        <ColumnListItem type="Active">
+          <cells>
+            <Text text="{Name}"/>
+            <Text text="{Gender}"/>
+
+            <!-- Actions cell: two buttons side-by-side -->
+            <HBox justifyContent="Center" renderType="Bare">
+              <Button
+                icon="sap-icon://edit"
+                type="Transparent"
+                tooltip="Update"
+                press="onOpenUpdateDialog" />
+              <Button
+                icon="sap-icon://delete"
+                type="Transparent"
+                tooltip="Delete"
+                press="onDeleteRow" />
+            </HBox>
+          </cells>
+        </ColumnListItem>
+      </items>
+    </Table>
+  </Page>
 </mvc:View>

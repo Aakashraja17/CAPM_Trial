@@ -3,9 +3,9 @@
     <content>
       <VBox class="sapUiSmallMargin">
 
-        <Label text="EmpId" labelFor="updEmpId"/>
+        <!-- <Label text="EmpId" labelFor="updEmpId"/> -->
         <!-- If EmpId should not be changed, set editable="false" -->
-        <Input id="updEmpId" value="{EmpId}" editable="false"/>
+        <!-- <Input id="updEmpId" value="{EmpId}" editable="false"/> -->
 
         <Label text="Name" labelFor="updName"/>
         <Input id="updName" value="{Name}" />

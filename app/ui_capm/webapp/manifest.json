@@ -101,7 +101,7 @@
         },
         {
           "name": "RouteViewDetail",
-          "pattern": "RouteViewDetail/{EmpId}",
+          "pattern": "RouteViewDetail/{ID}",
           "target": [
             "TargetViewDetail"
           ]

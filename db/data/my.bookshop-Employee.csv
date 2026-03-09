@@ -1,6 +1,6 @@
-EmpId,Name,Salary,Gender,Age
-5,QWE,123455,Male,33
-1,ABC,100000,Male,44
-7,SDH,987654,Female,31
-2,XYZ,150000,Female,22
-4,LKJ,234565,Others,27
+Name,Salary,Gender,Age
+QWE,123455,Male,33
+ABC,100000,Male,44
+SDH,987654,Female,31
+XYZ,150000,Female,22
+LKJ,234565,Others,27

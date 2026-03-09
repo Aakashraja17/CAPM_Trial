@@ -7,7 +7,7 @@
 
         <Label text="EmpId" labelFor="dEmpId"/>
         <!-- If EmpId should not be changed, set editable="false" -->
-        <Input id="dEmpId" value="{EmpId}" editable="false"/>
+        <Input id="dEmpId" value="{ID}" editable="false"/>
 
         <Label text="Name" labelFor="dName"/>
         <Input id="dName" value="{Name}" />

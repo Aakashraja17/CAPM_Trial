@@ -1,18 +1,21 @@
 namespace my.bookshop;
+using { managed } from '@sap/cds/common';
 
 entity Books {
   key ID    : Integer;
       title : String;
       stock : Integer;
 }
-entity Employee {
-  key EmpId : String;
+type Gender : String enum { male; Female; Others; };
+entity Employee : managed{
+  key ID     : UUID;
       Name: String;
       Salary:String;
       Age:Integer;
       @mandatory
-      Gender:Gender @assert.notNull @title : 'Gender';
+      @assert.enum
+      Gender:Gender;
       
 }
 
-type Gender : String enum { Male; Female; Others; };
+
