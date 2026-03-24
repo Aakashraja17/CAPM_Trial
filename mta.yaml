@@ -8,6 +8,7 @@ modules:
   path: gen/srv
   requires:
   - name: CAPM_Learn-db
+  - name: capm-xsuaa
   provides:
   - name: srv-api
     properties:
@@ -48,7 +49,43 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: CAPM_Learn-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: CAPM_Learn-destination-service
+    parameters:
+      content-target: true
+  - name: CAPM_Learn-repo-host
+    parameters:
+      service-key:
+        name: CAPM_Learn-repo-host-key
+  - name: capm-xsuaa
+    parameters:
+      service-key:
+        name: capm-xsuaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: TrialAppRouter_CAPM_Learn_repo_host
+          ServiceInstanceName: CAPM_Learn-html5-service
+          ServiceKeyName: CAPM_Learn-repo-host-key
+          sap.cloud.service: TrialAppRouter
+        - Authentication: OAuth2UserTokenExchange
+          Name: TrialAppRouter_capm_xsuaa
+          ServiceInstanceName: capm-xsuaa
+          ServiceKeyName: capm-xsuaa-key
+          sap.cloud.service: TrialAppRouter
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
 resources:
+- name: capm-xsuaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: xs-security.json
+    service: xsuaa
+    service-plan: application
 - name: CAPM_Learn-db
   type: com.sap.xs.hdi-container
   parameters:
@@ -64,16 +101,7 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     config:
-      HTML5Runtime_enabled: false
-      init_data:
-        instance:
-          destinations:
-          - Authentication: NoAuthentication
-            Name: ui5
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://ui5.sap.com
-          existing_destinations_policy: update
+      HTML5Runtime_enabled: true
       version: 1.0.0
     service: destination
     service-name: CAPM_Learn-destination-service

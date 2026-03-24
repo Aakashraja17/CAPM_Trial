@@ -1,0 +1,2 @@
+sap.ui.define([],function(){"use strict";function n(n){if(n==null)return NaN;const t=String(n).replace(/[^\d.-]/g,"");return Number(t)}return{subtotal:function(t,i){const e=n(t);const r=n(i);if(!isFinite(e)||!isFinite(r))return"0.00";return(e*r).toFixed(2)}}});
+//# sourceMappingURL=formatter.js.map

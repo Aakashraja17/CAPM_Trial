@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/model/json/JSONModel","sap/ui/Device","sap/ui/model/odata/v4/ODataModel"],function(e,n,a){"use strict";return{createDeviceModel:function(){var a=new e(n);a.setDefaultBindingMode("OneWay");return a},createODataModel:function(){return new a({serviceUrl:"/catalog/",synchronizationMode:"None",autoExpandSelect:true})}}});
+//# sourceMappingURL=models.js.map

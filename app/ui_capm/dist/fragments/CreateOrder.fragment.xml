@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+  <Dialog id="createOrderDialog" title="Create Order">
+    <VBox class="sapUiSmallMargin">
+
+      <!-- Bind to the JSON model -->
+      <Label text="Order Number" />
+      <Input value="{orderModel>/orderNumber}" id="inpOrderNumber" />
+
+      <Label text="Customer Name" />
+      <Input value="{orderModel>/customerName}" id="inpCustomerName" />
+
+      <Label text="Order Items" />
+
+      <Table id="orderItemsTable" inset="false" items="{orderModel>/Items}">
+        <columns>
+          <Column><Text text="Product" /></Column>
+          <Column hAlign="Center"><Text text="Qty" /></Column>
+          <Column width="3rem"></Column>
+        </columns>
+
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Select
+                selectedKey="{orderModel>product_ID}"
+                forceSelection="false"
+                width="100%"
+                items="{
+                  path: '/Products',
+                  templateShareable: false
+                }">
+                <core:Item key="{ID}" text="{title}" />
+              </Select>
+
+              <!-- Quantity lives in orderModel -->
+              <Input value="{orderModel>quantity}" type="Number" width="6rem" />
+
+              <!-- Delete row -->
+              <Button icon="sap-icon://delete"
+                      type="Transparent"
+                      press=".onDeleteItemRow" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+
+      <Button text="Add Product" press=".onAddItemRow" icon="sap-icon://add" />
+
+    </VBox>
+
+    <buttons>
+      <Button text="Create" type="Emphasized" press=".onCreateOrderSave" />
+      <Button text="Cancel" press=".onCreateOrderCancel" />
+    </buttons>
+
+  </Dialog>
+</core:FragmentDefinition>

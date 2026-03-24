@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent","com/capmlearn/uicapm/model/models","sap/ui/model/json/JSONModel"],(e,t,i)=>{"use strict";return e.extend("com.capmlearn.uicapm.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init(){e.prototype.init.apply(this,arguments);this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map
