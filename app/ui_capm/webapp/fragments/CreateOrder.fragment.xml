@@ -1,51 +1,53 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
 
-  <Dialog id="createOrderDialog" title="Create Order">
+  <Dialog id="createOrderDialog" title="Create Order" class="sapUiResponsivePadding">
+
     <VBox class="sapUiSmallMargin">
 
-      <!-- Bind to the JSON model -->
-      <Label text="Order Number" />
-      <Input value="{orderModel>/orderNumber}" id="inpOrderNumber" />
-
       <Label text="Customer Name" />
-      <Input value="{orderModel>/customerName}" id="inpCustomerName" />
+      <Input value="{orderModel>/customerName}" />
 
       <Label text="Order Items" />
 
-      <Table id="orderItemsTable" inset="false" items="{orderModel>/Items}">
+      <Table items="{orderModel>/Items}">
         <columns>
           <Column><Text text="Product" /></Column>
           <Column hAlign="Center"><Text text="Qty" /></Column>
-          <Column width="3rem"></Column>
+          <Column width="3rem" />
         </columns>
 
         <items>
           <ColumnListItem>
             <cells>
+
               <Select
                 selectedKey="{orderModel>product_ID}"
                 forceSelection="false"
-                width="100%"
-                items="{
-                  path: '/Products',
-                  templateShareable: false
-                }">
+                items="{path:'/Products', templateShareable:false}">
                 <core:Item key="{ID}" text="{title}" />
               </Select>
 
-              <!-- Quantity lives in orderModel -->
-              <Input value="{orderModel>quantity}" type="Number" width="6rem" />
+              <Input
+                value="{orderModel>quantity}"
+                type="Number"
+                width="5rem" />
 
-              <!-- Delete row -->
-              <Button icon="sap-icon://delete"
-                      type="Transparent"
-                      press=".onDeleteItemRow" />
+              <Button
+                icon="sap-icon://delete"
+                type="Transparent"
+                press=".onDeleteItemRow" />
+
             </cells>
           </ColumnListItem>
         </items>
       </Table>
 
-      <Button text="Add Product" press=".onAddItemRow" icon="sap-icon://add" />
+      <Button
+        text="Add Product"
+        icon="sap-icon://add"
+        press=".onAddItemRow" />
 
     </VBox>
 
